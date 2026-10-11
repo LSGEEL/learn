@@ -1,0 +1,33 @@
+# Keil MDK build output
+MDK-ARM/TEST01/
+*.o
+*.d
+*.crf
+*.axf
+*.hex
+*.bin
+*.map
+*.lst
+*.htm
+*.lnp
+*.dep
+*.sct
+*.build_log.htm
+*.iex
+*.tra
+*.__i
+*._ia
+
+# Keil user-specific files
+*.uvguix.*
+*.uvoptx.bak
+*.uvprojx.bak
+*.scvd
+JLinkLog.txt
+JLinkSettings.ini
+EventRecorderStub.scvd
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
