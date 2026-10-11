@@ -27,6 +27,10 @@ JLinkLog.txt
 JLinkSettings.ini
 EventRecorderStub.scvd
 
+# Vendor datasheets / reference manuals (large, redistributable only from vendor)
+docs/datasheet/*.pdf
+docs/reference/*.pdf
+
 # OS / editor
 Thumbs.db
 Desktop.ini
