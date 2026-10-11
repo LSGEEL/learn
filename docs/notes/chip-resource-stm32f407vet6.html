@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STM32F407VET6 芯片开发资源报告</title>
+<style>
+  :root {
+    --bg: #f8f9fa; --surface: #ffffff; --border: #e5e7eb; --text: #1f2328;
+    --muted: #656d76; --head: #f3f4f6; --link: #0969da;
+    --req-bg: #fbecec; --req-fg: #9f2f2d;
+    --rec-bg: #e7f0fb; --rec-fg: #1f5c99;
+    --opt-bg: #eef0f2; --opt-fg: #57606a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.6 -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif; }
+  main { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px;
+    border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 22px; }
+  header .sub { color: var(--muted); font-size: 13px; }
+  header .meta { text-align: right; color: var(--muted); font-size: 12px; }
+  section { margin-bottom: 32px; }
+  h2 { font-size: 17px; margin: 0 0 6px; }
+  .desc { color: var(--muted); margin: 0 0 12px; font-size: 13px; }
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .card .k { color: var(--muted); font-size: 12px; }
+  .card .v { font-weight: 600; margin-top: 2px; }
+  .card .n { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .assume { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 13px; }
+  th, td { border-bottom: 1px solid var(--border); padding: 9px 12px; text-align: left; vertical-align: top; }
+  th { background: var(--head); font-weight: 600; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fafbfc; }
+  td:nth-child(1) { white-space: nowrap; }
+  td:nth-child(5) { word-break: break-all; min-width: 90px; }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .req { background: var(--req-bg); color: var(--req-fg); }
+  .rec { background: var(--rec-bg); color: var(--rec-fg); }
+  .opt { background: var(--opt-bg); color: var(--opt-fg); }
+  ol, ul { margin: 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  .box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; }
+  .risk { background: #fff8e1; border: 1px solid #f0d98c; border-radius: 8px; padding: 14px 18px; }
+  .evidence { background: #f3f4f6; border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; font-size: 13px; color: #424a53; }
+  code { background: #eef0f2; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+  @media (max-width: 760px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media print {
+    body { background: #fff; } main { padding: 0; }
+    tbody tr:hover { background: none; }
+    section { break-inside: avoid-page; }
+    a::after { content: " (" attr(href) ")"; font-size: 10px; color: #666; word-break: break-all; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div>
+    <h1>STM32F407VET6 芯片开发资源报告</h1>
+    <div class="sub">STMicroelectronics · STM32F4 系列 · STM32F407/417 产品线</div>
+  </div>
+  <div class="meta">
+    生成日期：2026-10-10<br>
+    来源策略：ST 全球官网优先 → ST 官方 GitHub → Arm/Keil、OpenOCD 生态
+  </div>
+</header>
+
+<section>
+  <h2>芯片识别</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="k">厂商 / 系列</div>
+      <div class="v">STMicroelectronics</div>
+      <div class="n">STM32F4 高性能 MCU，STM32F407/417 产品线</div>
+    </div>
+    <div class="card">
+      <div class="k">内核 / 主频</div>
+      <div class="v">Arm Cortex-M4F</div>
+      <div class="n">最高 168 MHz，带 FPU 与 DSP 指令</div>
+    </div>
+    <div class="card">
+      <div class="k">存储</div>
+      <div class="v">512 KB Flash</div>
+      <div class="n">192 + 4 KB SRAM（“E” = 512 KB 档）</div>
+    </div>
+    <div class="card">
+      <div class="k">封装 / 温度 / 状态</div>
+      <div class="v">LQFP100（14×14 mm）</div>
+      <div class="n">“6” = 工业级 -40~85 °C；ST 官网标注 Active，量产中</div>
+    </div>
+  </div>
+  <p class="assume">
+    型号解析：<code>STM32F407</code> 产品线 + <code>V</code>（100 引脚）+ <code>E</code>（512 KB Flash）+ <code>T</code>（LQFP）+ <code>6</code>（-40~85 °C）。
+    带 <code>TR</code> 后缀（STM32F407VET6TR）为卷带包装，芯片本身相同。
+    下列参考手册、勘误表、SDK 都是系列级资料，覆盖 F405/407/415/417 等多个型号，使用时请按 F407、512 KB、LQFP100 筛选对应内容。
+  </p>
+</section>
+
+<section>
+  <h2>硬件开发资料</h2>
+  <p class="desc">用于原理图设计、器件选型校核、PCB 布局和最小系统搭建。</p>
+  <table>
+    <thead><tr><th>优先级</th><th>类别</th><th>资料</th><th>来源</th><th>链接</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge req">必需</span></td><td>产品页</td><td>STM32F407VE 产品页</td><td>ST 官网</td><td><a href="https://www.st.com/en/microcontrollers-microprocessors/stm32f407ve.html">st.com/stm32f407ve</a></td><td>汇总所有文档、CAD、订货型号及生命周期状态的入口</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>数据手册</td><td>STM32F405xx/407xx Datasheet（DS8626）</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/datasheet/stm32f407ve.pdf">stm32f407ve.pdf</a></td><td>引脚定义、复用功能表、电气参数、封装尺寸、订货信息</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>硬件设计指南</td><td>AN4488：STM32F4 硬件开发入门</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/application_note/an4488-getting-started-with-stm32f4xxxx-mcu-hardware-development-stmicroelectronics.pdf">AN4488 PDF</a></td><td>电源、去耦、复位、时钟、BOOT 引脚、调试接口和参考原理图</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>振荡器设计</td><td>AN2867：STM32 振荡器设计指南</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/application_note/an2867-guidelines-for-oscillator-design-on-stm8afals-and-stm32-mcusmpus-stmicroelectronics.pdf">AN2867 PDF</a></td><td>HSE/LSE 晶振选型、负载电容计算和布局要求</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>参考开发板</td><td>STM32F4DISCOVERY 产品页 / UM1472 用户手册</td><td>ST 官网</td><td><a href="https://www.st.com/en/evaluation-tools/stm32f4discovery.html">产品页</a> · <a href="https://www.st.com/resource/en/user_manual/um1472-discovery-kit-with-stm32f407vg-mcu-stmicroelectronics.pdf">UM1472</a></td><td>板载芯片为 <b>STM32F407VG</b>（1 MB Flash），与 VET6 同为 LQFP100，引脚兼容，但 Flash 大小不同</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>参考原理图</td><td>MB997（STM32F4DISCOVERY）原理图</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/schematic_pack/mb997-f407vgt6-b02_schematic.pdf">MB997 原理图 PDF</a></td><td>B02 版本，可直接用作 LQFP100 最小系统参考；如有更新版本，以产品页 CAD Resources 为准</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>IBIS 模型</td><td>STM32F405/415/407/417 IBIS</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/ibis_model/stm32f405-415_407-417_ibis.zip">IBIS ZIP</a></td><td>高速信号完整性仿真用</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>BSDL 模型</td><td>STM32F405/415/407/417 BSDL</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/bsdl_model/stm32f405-415_407-417_bsdl.zip">BSDL ZIP</a></td><td>JTAG 边界扫描测试用，也适用于产测</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>引脚规划</td><td>STM32CubeMX</td><td>ST 官网</td><td><a href="https://www.st.com/en/development-tools/stm32cubemx.html">STM32CubeMX</a></td><td>图形化引脚复用与时钟树规划，可导出引脚表 CSV；也用于软件工程生成</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>软件开发资料</h2>
+  <p class="desc">用于寄存器级开发、HAL/LL 驱动开发、工程生成与调试。</p>
+  <table>
+    <thead><tr><th>优先级</th><th>类别</th><th>资料</th><th>来源</th><th>链接</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge req">必需</span></td><td>参考手册</td><td>RM0090：STM32F405/415、407/417、427/437、429/439 参考手册</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">RM0090 PDF</a></td><td>外设寄存器、时钟树、复位、DMA、总线矩阵；系列级资料，F427/429 专有外设可跳过</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>编程手册</td><td>PM0214：STM32 Cortex-M4 编程手册</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/programming_manual/pm0214-stm32-cortexm4-mcus-and-mpus-programming-manual-stmicroelectronics.pdf">PM0214 PDF</a></td><td>内核、指令集、NVIC、SysTick、MPU、FPU</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>勘误表</td><td>ES0182：STM32F405/407xx 与 STM32F415/417xx 勘误表</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/errata_sheet/es0182-stm32f405407xx-and-stm32f415417xx-device-errata-stmicroelectronics.pdf">ES0182 PDF</a></td><td>按芯片丝印上的 revision 代码查对应问题和规避方法</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>SDK</td><td>STM32CubeF4（HAL/LL、CMSIS、中间件、例程）</td><td>ST 官网 / ST 官方 GitHub</td><td><a href="https://www.st.com/en/embedded-software/stm32cubef4.html">ST 页面</a> · <a href="https://github.com/STMicroelectronics/STM32CubeF4">GitHub</a></td><td>建议从 GitHub Releases 页下载正式发布版本，不要直接用 master 分支快照</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>驱动说明</td><td>UM1725：STM32F4 HAL 与 LL 驱动说明</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/user_manual/um1725-description-of-stm32f4-hal-and-lowlayer-drivers-stmicroelectronics.pdf">UM1725 PDF</a></td><td>HAL/LL API 参考</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>拆分组件仓库</td><td>cmsis_device_f4 / stm32f4xx_hal_driver</td><td>ST 官方 GitHub</td><td><a href="https://github.com/STMicroelectronics/cmsis_device_f4">cmsis_device_f4</a> · <a href="https://github.com/STMicroelectronics/stm32f4xx_hal_driver">stm32f4xx_hal_driver</a></td><td>只需设备头文件、启动文件或 HAL 时可单独引入，适合 CMake/子模块方式</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>IDE</td><td>STM32CubeIDE</td><td>ST 官网</td><td><a href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></td><td>免费的 GCC 工具链 IDE，集成 CubeMX 和调试器；下载需要登录 ST 账号</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>Keil 支持包</td><td>Keil STM32F4xx_DFP</td><td>Arm Keil</td><td><a href="https://www.keil.arm.com/packs/stm32f4xx_dfp-keil/">Keil Pack</a></td><td>使用 MDK-ARM 时需要安装，包含 Flash 算法和设备描述</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>SVD</td><td>STM32F4 SVD 文件</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/svd/stm32f4-svd.zip">stm32f4-svd.zip</a></td><td>调试器中查看外设寄存器（VS Code Cortex-Debug 等）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>烧录编程 / 量产测试资料</h2>
+  <p class="desc">用于下载调试、系统 Bootloader 烧录、批量编程和产测。</p>
+  <table>
+    <thead><tr><th>优先级</th><th>类别</th><th>资料</th><th>来源</th><th>链接</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge req">必需</span></td><td>烧录工具</td><td>STM32CubeProgrammer</td><td>ST 官网</td><td><a href="https://www.st.com/en/development-tools/stm32cubeprog.html">STM32CubeProg</a></td><td>支持 ST-LINK（SWD/JTAG）、UART、USB DFU；提供 CLI，可用于批量烧录脚本；用户手册为 UM2237，可在该页面获取</td></tr>
+      <tr><td><span class="badge req">必需</span></td><td>系统 Bootloader</td><td>AN2606：STM32 系统存储器启动模式</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/application_note/an2606-stm32-microcontroller-system-memory-boot-mode-stmicroelectronics.pdf">AN2606 PDF</a></td><td>BOOT0/BOOT1 配置，以及 F407 Bootloader 支持的接口和引脚</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>串口 ISP 协议</td><td>AN3155：STM32 Bootloader 的 USART 协议</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/application_note/an3155-usart-protocol-used-in-the-stm32-bootloader-stmicroelectronics.pdf">AN3155 PDF</a></td><td>自研上位机或产线串口烧录时使用</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>USB DFU 协议</td><td>AN3156：STM32 Bootloader 的 USB DFU 协议</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/application_note/an3156-usb-dfu-protocol-used-in-the-stm32-bootloader-stmicroelectronics.pdf">AN3156 PDF</a></td><td>通过 USB OTG FS 进行 DFU 烧录</td></tr>
+      <tr><td><span class="badge rec">推荐</span></td><td>读保护 / 选项字节</td><td>RM0090 中的 Flash 与选项字节章节</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf">RM0090 PDF</a></td><td>RDP Level 0/1/2 与写保护；注意 Level 2 不可逆</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>OpenOCD 配置</td><td>stm32f4x.cfg 目标脚本</td><td>OpenOCD 官方仓库</td><td><a href="https://github.com/openocd-org/openocd/blob/master/tcl/target/stm32f4x.cfg">stm32f4x.cfg</a></td><td>使用 OpenOCD + ST-LINK/CMSIS-DAP 的开源调试方案</td></tr>
+      <tr><td><span class="badge opt">可选</span></td><td>边界扫描</td><td>STM32F405/415/407/417 BSDL</td><td>ST 官网</td><td><a href="https://www.st.com/resource/en/bsdl_model/stm32f405-415_407-417_bsdl.zip">BSDL ZIP</a></td><td>产线 JTAG 焊接与连通性测试</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>最小下载集</h2>
+  <div class="box">
+    <ol>
+      <li>数据手册：<a href="https://www.st.com/resource/en/datasheet/stm32f407ve.pdf">stm32f407ve.pdf</a></li>
+      <li>参考手册：RM0090</li>
+      <li>勘误表：ES0182</li>
+      <li>SDK：STM32CubeF4（GitHub 正式 Release 版本）</li>
+      <li>硬件指南：AN4488，以及 MB997 原理图（作为最小系统参考）</li>
+      <li>工具：STM32CubeMX + STM32CubeIDE（或 Keil + STM32F4xx_DFP）+ STM32CubeProgrammer</li>
+      <li>Bootloader：AN2606</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>推荐阅读顺序</h2>
+  <div class="box">
+    <ol>
+      <li><b>数据手册</b>：先看框图、引脚表、复用功能表、电气参数，确认 512 KB / LQFP100 版本的资源。</li>
+      <li><b>AN4488 + AN2867</b>：设计电源、复位、晶振、BOOT 和 SWD 等最小系统。</li>
+      <li><b>ES0182</b>：在原理图定稿前，排查会影响硬件设计的勘误。</li>
+      <li><b>STM32CubeMX</b>：规划引脚和时钟树，生成初始工程。</li>
+      <li><b>RM0090</b>：按需阅读要用到的外设章节（RCC、GPIO、DMA、定时器、通信接口）。</li>
+      <li><b>UM1725 + CubeF4 例程</b>：参考 HAL/LL 用法，例程以 STM32F4DISCOVERY 为准。</li>
+      <li><b>PM0214</b>：涉及中断优先级、FPU、MPU 或底层优化时再查。</li>
+      <li><b>AN2606 / STM32CubeProgrammer</b>：规划量产烧录方式和读保护策略。</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>缺失或风险项</h2>
+  <div class="risk">
+    <ul>
+      <li><b>官方评估板不是 VET6</b>：STM32F4DISCOVERY 使用 STM32F407VG（1 MB Flash）。照搬其例程时，需要修改链接脚本中的 Flash 大小（512 KB）和 Flash 扇区使用（VE 只有扇区 0~7）。</li>
+      <li><b>系列级资料</b>：RM0090 同时覆盖 F42x/F43x，其中的 LTDC、DMA2D、SAI、FMC/SDRAM 等外设 <b>F407 并不具备</b>，阅读时要以数据手册为准。</li>
+      <li><b>勘误与芯片版本相关</b>：ES0182 中的问题与芯片 revision 有关，需对照实物丝印判断。</li>
+      <li><b>部分下载需要登录</b>：STM32CubeIDE、STM32CubeMX、STM32CubeProgrammer 安装包需要 ST 账号登录后下载。</li>
+      <li><b>未核实的内容</b>：本报告没有核实 CubeF4 和各工具的当前版本号，也没有找到 ST 官方给出的 VET6 专属参考设计；ECAD 封装和 3D 模型请到产品页的 CAD Resources 获取。</li>
+      <li><b>仿冒片风险</b>：F407 市场上存在仿冒或翻新货，量产采购应走 ST 授权分销渠道。</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>检索证据</h2>
+  <div class="evidence">
+    <ul>
+      <li>检索方式：2026-10-10 通过 curl 直接访问 ST 官网和 GitHub。本次会话中的 Web 搜索工具不可用，所以没有使用搜索引擎结果。</li>
+      <li>产品页 <code>st.com/.../stm32f407ve.html</code> 返回 200。页面显示 STM32F407VET6 与 STM32F407VET6TR 状态为 <b>Active（Product is in volume production）</b>，封装 LQFP 100 14x14x1.4 mm，工业级，ST 长期供货承诺 10 年（起始日期 2026-01-01）。</li>
+      <li>产品页上直接列出的资源链接：数据手册、IBIS、BSDL、SVD、物料声明。</li>
+      <li>以下 PDF 链接均返回 HTTP 200 / application/pdf：DS（stm32f407ve.pdf）、RM0090、PM0214、ES0182、AN4488、AN2606、AN2867、AN3155、AN3156、UM1725、UM1472、MB997 原理图。</li>
+      <li>以下工具和 SDK 页面均返回 200，且页面标题匹配：STM32CubeF4、STM32CubeMX、STM32CubeIDE、STM32CubeProg、STM32F4DISCOVERY、Keil STM32F4xx_DFP；GitHub 仓库 STM32CubeF4、cmsis_device_f4、stm32f4xx_hal_driver 以及 OpenOCD stm32f4x.cfg 均可访问。</li>
+      <li>UM2237（STM32CubeProgrammer 用户手册）的直链会跳转，没有直接返回 PDF，因此表中改为链接到 STM32CubeProg 工具页。</li>
+      <li>没有做下载完整性校验或文档版本比对。</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
